@@ -1,0 +1,75 @@
+	#header{
+	text-align: center;
+	color: rgb(69, 69, 69);
+	font-family: georgia;
+	font-size: 50px;
+	padding-top: 30px;
+	}
+	
+	a {
+    color: orangered;
+	}
+	
+	img{
+	display: block;
+	width: 99%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	
+	#bodyDiv{
+	display: block;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	
+	#lesserHeader{
+	text-align: left;
+	color: orangered;
+	font-family: georgia;
+	font-size: 30px;
+	padding-top: 30px;
+	}
+	
+	#subHeading{
+	text-align: center;
+	color: dimgray;
+	font-family: georgia;
+	font-size: 15px;
+	}
+	
+	#main{
+	width: 100%;
+	display: block;
+	height: 300px;
+
+	}
+	
+	#thumbnailContainer{
+	display: block;
+	width: 95%;
+	border-style: solid;
+	border-style: none dotted none dotted;
+	border-color: orangered;
+	border-width: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10%;
+	}
+	
+	#thumbnailText{
+	color: rgb(69, 69, 69);
+	font-family: georgia;
+	font-size: 19px;
+	padding-top: 2%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 2%;
+	}
+	
+	#textDiv{
+	background: linear-gradient(white, lightcyan);
+	margin-left: auto;
+	}

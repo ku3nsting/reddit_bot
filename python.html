@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="madstyleyo.css">
+
+<title>&#9900 Reddit Bot API How-To &#9900</title>
+
+</head>
+
+<body>
+<div id="main">
+
+	<div id="header">
+	Reddit Bot Tutorial
+	</div>
+	<div id="subHeading"> <a href="basic5.html"><< Previous page</a>  &#9900  <a href="python7.html">Next page >> </a></div>
+	
+<div id="bodyDiv">
+	<div id="lesserHeader">
+	An implementation with wrappers
+	</div>
+	
+<div id="thumbnailContainer">
+
+	<div id="textDiv">
+		<div id="thumbnailText">
+		Now that we know the basics of making API calls with Node.js, let's make life easy on ourselves by using a wrapper to build our bot. As I mentioned before, Reddit does not produce its own API wrapper for use by developers the way other websites like Twitter have done. The only downside to using a wrapper to make our bot instead of developing directly with reddit-oauth and request is that, eventually, our wrapper might not be supported by reddit or maintained by its initial developer. Using a wrapper is still worth it for the increased readability it provides us, especially within the context of a tutorial. If you want more details about what's going on behind the scenes in our wrapper of choice, Snoocore, you can always dive directly into the source files on github and have a look at what the methods you're calling are doing (hint, they're basically doing exactly what we saw on the previous page).
+		<p>
+		First, install Snoocore like this:
+		<br><b>npm install snoocore</b>
+		<p>
+		Next, 'require' Snoocore in your application: <br>
+		<b>var Snoocore = require('snoocore');</b>
+		<p>
+		Now that you're familiar with oauth and the process of logging into reddit with API calls, the following code should look familiar:
+		
+				<p>
+		<img src=images/botfunc1.png>
+		<p>
+
+		In this example, we're creating an instance of a Snoocore object, then using its .useragent and .oauth methods to identify our bot to the reddit server. Type, key, secret, username, and password should all be familiar. "Scope" refers to the API endpoints that we can reach with this instance of oauth. The API defines different scopes for different endpoints. If we move from one endpoint to another that is out of scope, we'll have to authenticate again. We don't have to worry about this when we're using the Snoocore wrapper, but if we were building the bot without a wrapper, we would have to re-authenticate several times.
+<p>
+In the last chunk of code, I begin a while loop with a bool. While the program runs, this will essentially execute an endless loop that continually parses one comment at a time. This is not a perfect method because we're not reading a stream, so it is possible that comments will come in faster than our function can process them, and that some will be missed. This is acceptable, since this bot is confined to just one subreddit, /r/wholesomememes.
+<p>
+After the function captures a comment, it pushes it into an array.<p>
+		<img src=images/botfunc2.png>
+		<p>
+		After the call to GET captures a comment, we unpack that comment's 'data' data member to see what it contains. If the comment is equal to the string "I just need a hug", then we make a second call to the api "comment" endpoint, this time a POST.<p>
+		
+		Using the ID of the captured comment, we post a reply using the "response" parameter of the post function.
+
+		Some parts of this example were adapted from <a href="https://snoocore.readme.io/docs/beginners-guide">the Snoocore beginner's guide.</a>
+		<p>
+		
+
+
+		Now that we know how to put together a simple bot in Node.js, let's re-create it in Python, since that's the most common approach developers use for Reddit bots.
+		<p>
+		<a href="python7.html">Next: Python bots >> </a>
+		
+		
+		</div></div>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>

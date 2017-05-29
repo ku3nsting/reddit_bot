@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="madstyleyo.css">
+
+<title>&#9900 Reddit Bot API How-To &#9900</title>
+
+</head>
+
+<body>
+<div id="main">
+
+	<div id="header">
+	Reddit Bot Tutorial
+	</div>
+	<div id="subHeading"> <a href="basic5.html"><< Previous page</a>  &#9900  <a href="python7.html">Next page >> </a></div>
+	
+<div id="bodyDiv">
+	<div id="lesserHeader">
+	Building the bot in Node.js
+	</div>
+	
+<div id="thumbnailContainer">
+
+	<div id="textDiv">
+		<div id="thumbnailText">
+		Now that we know the basics of making API calls with Node.js, let's consider which libraries we should include in our bot implementation. A wrapper is a very large kind of library that can make our lives a bit easier by providing simplified syntax and handle some aspects of our API calls for us. <p>
+		Though wrappers, like Snoocore, can be useful, none of them are developed officially by reddit, and though some of them are complete (meaning they reach all aspects of the API), most are not comprehensive enough to be useful without additional libraries. <p>
+		For this bot, we will include the following two libraries, all discussed previously
+		<ul>
+		<li>Reddit-oauth, which handles authentication</li>
+		<li>Reddit-stream, which provides a stream of comments or posts</li>
+		<p>The main downside to using a wrapper to make our bot instead of developing directly with reddit-oauth and request or reddit-stream is that, eventually, our wrapper might not be supported by reddit or maintained by its initial developer.
+		<p>
+		To build our Bot, first we need to install both of these libraries:
+		<p><b>$npm install reddit-oauth</b>
+		<br><b>$npm install reddit-stream</b>
+		<p>
+		Create your bot as a code file in your chosen IDE. For this example, I'll be using Notepad++. 
+		<p>
+		Because the Jelly Fox bot is all about helping to meet user's spoken needs, I chose to have it interact specifically with the subreddit "wholesomeMemes". The purpose of this subreddit is to help users feel good about themselves and current events.  You can give your bot a single subreddit to play with by including it in the path to your desired endpoint. <p>
+		
+		Our bot will work by reading the comments that the API passes to our script (as individual comments passed into an array). Each comment is an object with data and an author, so we can peek into each one and see if it contains a request for JellyFoxBot to fulfill. <p>
+		
+		Though eventually I would like this bot to be responsive to all kinds of needs, for now, it will only listen to specific needs. A problem with reddit bots is that if they are too active on the site, they can get banned or blocked. It is very important to make sure that your bot does not annoy or impede users on the site.
+		<p>Because of the limited scope of the tutorial, JellyFoxBot will only listen for one particular request, "I just need a hug". (I discovered upon testing that the simpler string "I need a hug" is already being answered by a similar bot.)
+		<p>
+		Now that you're familiar with oauth and the process of logging into reddit with API calls, the following code should look familiar. Note how I 'required' our libraries at the top of the document:
+				<p>
+		<img src=images/workingNode.png>
+		<p>
+
+		In this example, we're creating an instance of an oauth object called API, and feeding it our bot's credentials.
+<p>
+Next, we use oauth's passAuth function to log in. In the console, our access token is printed at this point. (It's an ugly hash code, just like our credentials). Keeping track of the access token is only necessary if we plan to change scope during the run of our application. "Scope" refers to the API endpoints that we can reach with this instance of oauth. The API defines different scopes for different endpoints. If we move from one endpoint to another that is out of scope, we'll have to authenticate again. We don't have to worry about this for our application.
+		<p>
+		Note that I have omitted my actual credentials from the code in this example. If you plan to share your bot's source code on github or elsewhere, be sure to either remove your user credentials from the code or find a way to bypass hard-coding them altogether. 
+<p>
+At the bottom, I start the stream with a simple call to the reddit-stream library. In the code, I specify that I want comments (the other parameter option is "posts") from the specific subreddit "WholesomeMemes". The third parameter is actually ignored in the scope of this bot, but I pasted my App_Id there, as it's a field Reddit sometimes uses for identification.
+<p>
+While the program runs, the stream will essentially execute an endless loop that continually parses incoming comments to the subreddit.
+<p>
+		<img src=images/workingNode2.png>
+		Because we're using reddit-stream, we don't need to place any calls to GET. Instead, we can examine each comment as it streams in, comparing it to our target string. When we find a match, we make a POST directly to the /api/comment endpoint.
+		
+		<p>
+		Using the ID of the captured comment, we post a reply using the "response" parameter of the post function.
+		<p>
+		We then get feedback on the console that our message has been sent!<p>
+		
+
+
+		Now that we know how to put together a simple bot in Node.js, let's re-create it in Python, since that's the most common approach developers use for Reddit bots.
+		<p>
+		<a href="python7.html">Next: Python bots >> </a>
+		
+		
+		</div></div>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>

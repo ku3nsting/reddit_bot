@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="madstyleyo.css">
+
+<title>&#9900 Reddit Bot API How-To &#9900</title>
+
+</head>
+
+<body>
+<div id="main">
+
+	<div id="header">
+	Reddit Bot Tutorial
+	</div>
+	<div id="subHeading"> <a href="all6.html"><< Previous page</a>  &#9900  <a href="caveats9.html">Next page >> </a></div>
+	
+<div id="bodyDiv">
+	<div id="lesserHeader">
+	An approach with Python
+	</div>
+	
+<div id="thumbnailContainer">
+
+	<div id="textDiv">
+		<div id="thumbnailText">
+Just like our Snoocore implementation, a Python implementation starts by installing a library. Install PRAW by first installing praw in the same directory where you have installed your version of Python.
+<p>
+Use the command <b> pip install praw</b> will get the most recent version of the praw library into your python installation. This should work equally well with installations of Python 2 and Python 3, as long as you have pip installed already (If not, you get get it from <a href=http://pypi.python.org>pypi.python.org</a>).<p>
+
+Create your bot as a file in your chosen Python version and IDE. For this example, I'll be using Python 2.7 and coding in Notepad++. <p>
+
+To begin, we'll import praw and create an instance of the praw class, just as we did with snoocore. The authentication information should look very familiar by now.<p>
+<img src=images/py1.png>
+
+<p>
+The implementation of our bot in a single subreddit is different here than it was in Node.js. In PRAW, "subreddit" is actually an object with its own properties. Praw makes API calls behind the scenes and will pass your bot's calls through the subreddit object. <p>
+<img src=images/py2.png>
+<p> 
+ 
+Another difference from Node.js is that the subreddit object has a property called "stream". With stream, PRAW grabs a continuous stream of comments being made to the subreddit by querying the API. PRAW will keep querying the API until the bot stops running or until your script tells it to stop. In my opinion, this is significantly cleaner than the implementation we made with snoocore (or could make with vanilla Node.js), and helps explain why Python is the favored language for Reddit bots.
+<p>
+<img src=images/py3.png><p>
+
+Our bot will work by reading the comments that the API passes to our script (as a stream created by PRAW). The stream "comments" is composed of individual comments that contain text and an author, so we can ask python to step through the stream (endlessly) with a for loop structured the following way: 
+<p> 
+<img src=images/py4.png><p>
+The bot responds by making a comment in response to the post that made the triggering statement. PRAW handles the API calls from the original comment stream and back to the website to make the final comment: "*hugs* Feel better buddy."
+<p>
+<img src=images/py5.png><p>
+All in all, I would contend that Python is the better language for dealing with the Reddit API at the moment, because much better tools exist to make dealing with it simpler.<p>
+
+		Now that we have implemented our bot in Node.js and Python, let's discuss some caveats related to our design.
+		<p>
+		<a href="caveats9.html">Next: Caveats >> </a>
+		
+		
+		</div></div>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>

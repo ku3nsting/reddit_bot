@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="madstyleyo.css">
+
+<title>&#9900 Reddit Bot API How-To &#9900</title>
+
+</head>
+
+<body>
+<div id="main">
+
+	<div id="header">
+	Reddit Bot Tutorial
+	</div>
+	<div id="subHeading"> <a href="choose4.html"><< Previous page</a>  &#9900  <a href="all6.html">Next page >> </a></div>
+	
+<div id="bodyDiv">
+	<div id="lesserHeader">
+	Basic calls in Node.js (no wrappers)
+	</div>
+	
+<div id="thumbnailContainer">
+
+	<div id="textDiv">
+		<div id="thumbnailText">
+		If we want to make a call to the api without the help of wrappers, we'll want to use a Node.js library to help handle our HTTP requests.<p>
+		Install the "request" library by typing npm request --save into the command line.
+		<p>
+		One way of letting our bot interact with a user is by making HTTP requests directly. This is no longer supported in all cases because most Reddit API calls require oauth, but it's a good starting point to understand how we can use an HTTP request and a JSON object to get information we need from the API.
+		<p>
+		<img src=images/nodeex1.png>
+		<p>
+		In this example, we first "require" request to include it in our file.<p>
+		Then, we do a login operation by providing the website address, 'https://ssl.reddit.com/api/login?api_type=json&user=', and the username and password of an account we own. The request library, when called, performs the login operation with our credentials, and creates a JSON object containing the modhash and cookie of our login session. 
+		
+		<p>
+		Some parts of this example were adapted from <a href="https://stackoverflow.com/questions/21652481/posting-a-comment-to-reddit-api-with-nodejs-request-module">this discussion on StackOverflow.</a>
+		<p>
+		You probably noticed that the example above is missing the app ID and secret that we received when we registered our bot. These two codes are part of oauth, which we can access by installing another Node.js library called "reddit-oauth". This library contains an object called RedditAPI, whose methods we can use to complete a sucessful oauth login. <i>To be clear, for most modern reddit bots, you should use oauth, not the login method above.</i>
+		
+		<p>
+		<img src=images/nodeex_2.png>
+		<p>
+		In this example, we feed a RedditAPI object our appID and Secret, then call its passAuth method, which makes a HTTP request to log in just like we did manually in the example above. 
+		<p>
+		
+		<img src=images/post.png>
+		Now that we've logged in, we can use the API documentation to find the URL of our desired endpoint (comment, in this post example), and make some calls! Here, we use the POST method to make a request directly to the API endpoint api/comment.
+		<p>
+		In this example, the APIObject is creating a comment JSON object with the id "someObject_id" and the content "Hello World". If we check the API docs, we can see that the content string is being stored as the comment's "data" value. This is important, because if we wanted to retrieve this comment later with a GET, we could use it's ID to call it's .data value and return the string "Hello World".
+		
+		The bottom part of the code snippet, after function, processes the parameters for the post function, which handles errors and the type of post (response, in this case).
+		
+		<p>
+		This code would ordinarily take a url as a parameter, so that it knew exactly where the comment could go. Alternatively, it could take the ID of a parent comment, and post to that comment as a response.
+		
+		Some parts of this example were adapted from <a href="https://www.npmjs.com/package/reddit-oauth">this part of the reddit-oauth docs.</a>
+		
+		<p>
+		The shows the basics of how we would reach an endpoint using the POST method of the oauth library, but there are tons of other libraries we can use to craft calls to the Reddit API.<p>
+		
+		For example, if we wanted to deal with comments in a stream, we could install the library reddit-stream using the following command:
+		<p>
+		<b>$ npm install reddit-stream</b>
+		<p>
+		We would start our document with the line "stream = require 'reddit-stream', and then login and pass oauth as we did above. After that, we could create a stream object, and access it like this: 
+
+<img src=images/stream.png>
+ This very simple code is relying on the reddit-stream library to automatically and repeatedly fetch comments from the WholesomeMemes subreddit, using the GET version of the POST API call we saw above. This is a simple example of the kind of functionality that will be useful for our bot, but the point is that there are hundreds of specialized node.js libraries like this one that can assist us in crafting exactly the kinds of calls we need to talk to the API, in addition to not-specialized ones like request, which can help us carry out basic browser functions. We'll discuss libraries (and their spiritual older brothers, wrappers) further when we begin implementing our bot in Node.js.
+ <p>
+ Reddit does not maintain any listing of supported libraries or API tools, and the API documentation provided by Reddit is long on technical detail, but very short on implementation advice. The best place to search for libraries to include in your javascript bot is <a href=https://www.npmjs.com/>https://www.npmjs.com/</a>, an online repository for node libraries.
+		<p>
+		Now that we know how basic API calls are structured, lets move up a level and make use of some wrappers.
+		<p>
+		<a href="all6.html">Next: Wrappers >> </a>
+		
+		
+		</div></div>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>

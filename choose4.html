@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="madstyleyo.css">
+
+<title>&#9900 Reddit Bot API How-To &#9900</title>
+
+</head>
+
+<body>
+<div id="main">
+
+	<div id="header">
+	Reddit Bot Tutorial
+	</div>
+	<div id="subHeading"> <a href="registration3.html"><< Previous page</a>  &#9900  <a href="basic5.html">Next page >> </a></div>
+	
+<div id="bodyDiv">
+	<div id="lesserHeader">
+	Choose a development language
+	</div>
+	
+<div id="thumbnailContainer">
+
+	<div id="textDiv">
+		<div id="thumbnailText">
+		Most Reddit bots are made with Python, not Javascript. Python bots are lightweight and easy to build, and can be less fiddly to debug than bots written in Javascript.
+		<p>
+		When bots are written in Javascript, they necessarily use Node.js to facilitate communication with the server.
+		<p>
+		No matter which language you choose, the vast majority of Reddit bots make use of "wrappers", which are frameworks that simplify calls to the API by parsing the input and output before the developer interacts with it. This is because Reddit does not supply a prebuilt client for interacting with its API, and handling xml or Ajax requests one at a time to the API is tricky with Reddit's modern Oauth authentication.
+		<p>
+		In this tutorial, we'll cover both Python and Node.js bot development methods.
+		<p>
+		A common Python framework used to access the Reddit API is PRAW. It is documented here:<a href=https://praw.readthedocs.io/en/latest/> https://praw.readthedocs.io/en/latest/</a>. PRAW is downloaded and installed like any other python module (more on that later), and then all API methods are called as member methods of a PRAW class object.
+		<p>
+		There are many choices of wrapper for developing in Node.js, and they all do the same thing: they facilitate calls to the API, which saves the developer from having to craft XML or Ajax calls by hand. This is particularly handy because, within the last few years, Reddit heightened their encryption security to require oauth authentication for all API calls. Wrappers tighten up the process of making those calls. For Node.js, I would recommend the simple api-client available here, <a href=https://github.com/reddit/node-api-client>https://github.com/reddit/node-api-client</a>, or a very popular framework with more features called <a href=https://not-an-aardvark.github.io/snoowrap/>Snoowrap</a>.
+		<p>
+		A detailed list of current API wrappers that can be used to interact with the Reddit API is available <a href=https://github.com/reddit/reddit/wiki/API-Wrappers>here</a>. 
+
+		<p>
+		Now that we know which language we're using, let's craft some API calls!
+		<p>
+		<a href="basic5.html">Next: Basic Calls in Node.js >> </a>
+		
+		
+		</div></div>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>

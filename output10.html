@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="madstyleyo.css">
+
+<title>&#9900 Reddit Bot API How-To &#9900</title>
+
+</head>
+
+<body>
+<div id="main">
+
+	<div id="header">
+	Reddit Bot Tutorial
+	</div>
+	<div id="subHeading"> <a href="caveats9.html"><< Previous page</a>  &#9900  <a href="conclusion11.html">Next page >> </a></div>
+	
+<div id="bodyDiv">
+	<div id="lesserHeader">
+	Output and Testing
+	</div>
+	
+<div id="thumbnailContainer">
+
+	<div id="textDiv">
+		<div id="thumbnailText">
+As long as your machine has access to the internet, you can run your bot by calling it from the command line and running it with either Python or Node, depending on how you chose to develop it. 
+<p>
+In windows, this would look like <b>"python bot.py"</b>, or <b>"node bot.js"</b>. 
+
+<p>For the bot I developed in our examples, I would substitute the name "jellyFoxBot" for the placeholder "bot."<p>
+
+In both implementations, we intentionally throw the script into an endless loop of interaction with Reddit's incoming comment streams. If you have re-created the scripts featured here, bear in mind that they will only exit if you use ctrl+c to quit out of the console. You could incorporate a timeout or some other stopping mechanism into your script if you choose.
+
+<p>Because the bot's output will be visible to users, it would be a good idea to use the number of comments made by the bot as the determining factor that stops its action. You might program it so that the bot stops making comments after it has made 6 comments in one day, for instance.
+<p>
+
+The username obscured in this example is an account I own. I used this account to comment on the subreddit to see if the bot would pick it up. I included some print statements to trace the bot's actions. There, second from the bottom, you can see that the bot read my comment in real time!
+<p>
+<img src=images/out1.png>
+<p>
+Unfortunately, there was already a bot active on Reddit that responded to requests for hugs using the string "I want a hug." I discovered this while testing my bot, so changed the wording of the string that triggers the bot, initially to "just need a hug." To test the bot, I logged in as a different user, and wrote the comment: "I was all ready to come in here and ask if you just need a hug, but then I read the thumbnail. Carry on!" 
+<p>
+
+Soon after, a refresh on reddit revealed that the bot had made a comment:
+<p>
+ <img src=images/out2.png> 
+ <p>
+I can also view the interaction from the bot's account, just to make sure everything works as expected:
+<p>
+<img src=images/out3.png> 
+<p>
+Obviously, the string "just need a hug" will probably catch cases (like my testcase) that aren't really requests, so, in the spirit of the Jelly Fox, I changed the matching string to "I just need a hug". Hopefully I'll find fewer collisions with other bots as I give the Jelly Fox more strings to recognize.
+
+		<p>
+		<a href="conclusion11.html">Next: Conclusion >> </a>
+		
+		
+		</div></div>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>
